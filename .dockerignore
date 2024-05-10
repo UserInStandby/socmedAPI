@@ -13,3 +13,38 @@ app/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
+
+# Pycharm
+# PyCharm project files
+.idea/
+
+# PyCharm debug output
+*.pyc
+__pycache__/
+
+# PyCharm test output
+*.pyo
+*.pyd
+
+# PyCharm packaging
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+
+# PyCharm logs
+*.log
+
+# PyCharm misc
+*.pid
+*.sock
+*.swp
+*.bak
+*.bak1
+*.bak2
+*.bak3
+*.tmp
