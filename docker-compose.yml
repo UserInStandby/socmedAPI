@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  socmedapi:
+    container_name: socmedapi
+    build:
+      context: .
+      args:
+        - DEBUG=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./socmedapi:/socmedapi
+      - dev-static-data:/vol/web
+    command:
+      sh -c "python manage.py runserver 0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=dbpass
+    depends_on:
+      - db
+      - redis
+
+  celery:
+    container_name: celery
+    build:
+      context: .
+    command:
+      sh -c "/myvenv/bin/celery -A socmedapi worker --loglevel=info"
+    volumes:
+      - ./socmedapi:/socmedapi
+    depends_on:
+      - db
+      - redis
+
+  db:
+    container_name: postgres
+    image: postgres:15-alpine3.18
+    volumes:
+      - dec-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdv
+      - POSTGRES_USER=devuser
+      - POSTGRES_PASSWORD=dbpass
+
+  redis:
+    container_name: redis
+    image: redis:7.0.15-alpine
+
+volumes:
+  dev-db-data:
+  dev-static-data:
