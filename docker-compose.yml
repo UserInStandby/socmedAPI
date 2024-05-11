@@ -39,7 +39,7 @@ services:
     container_name: postgres
     image: postgres:15-alpine3.18
     volumes:
-      - dec-db-data:/var/lib/postgresql/data
+      - dev-db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=devdv
       - POSTGRES_USER=devuser
