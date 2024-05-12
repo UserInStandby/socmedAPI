@@ -9,7 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - ./socmedapi:/socmedapi
-      - dev-static-data:/vol/web
+      - socmed-static-data:/vol/web
     command:
       sh -c "python manage.py runserver 0.0.0:8000"
     environment:
@@ -42,7 +42,7 @@ services:
     container_name: postgres
     image: postgres:15-alpine3.18
     volumes:
-      - dev-db-data:/var/lib/postgresql/data
+      - socmed-postgres-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
@@ -53,5 +53,5 @@ services:
     image: redis:7.0.15-alpine
 
 volumes:
-  dev-db-data:
-  dev-static-data:
+  socmed-postgres-data:
+  socmed-static-data:
