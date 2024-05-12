@@ -23,7 +23,7 @@ RUN python -m venv /myvenv && \
         then /myvenv/bin/pip install -r /tmp/requirements.dev.txt ;\
     fi && \
     rm -rf /tmp && \
-    apk del .tmp-buiuld-deps && \
+    apk del .tmp-build-deps && \
     adduser \
         --disabled-password \
         --no-create-home \
