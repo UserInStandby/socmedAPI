@@ -26,12 +26,10 @@ test:
   script:
     - docker-compose up -d
     - docker-compose run --rm socmedapi sh -c "python manage.py test"
-    - docker-compose down
 
 lint:
   stage: lint
   script:
-    - docker-compose up -d
     - docker-compose run --rm socmedapi sh -c "flake8"
     - docker-compose down
 
