@@ -36,7 +36,7 @@ class UserModelTests(TestCase):
         ]
 
         for email, expected in sample_emails:
-            user = get_user_model().objects.create(email, "password123")
+            user = get_user_model().objects.create(email=email, password="password123")
 
             self.assertEqual(user.email, expected)
 
@@ -50,7 +50,7 @@ class UserModelTests(TestCase):
         ]
         user = create_user()
         for email, expected in sample_emails:
-            user = user.email = email
+            user.email = email
             user.save()
             user.refresh_from_db()
 

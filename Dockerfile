@@ -38,4 +38,4 @@ ENV PATH="/scripts:/myvenv/bin:$PATH"
 
 USER django-user
 
-ENTRYPOINT ["run.sh"]
+CMD ["/scripts/run.sh"]

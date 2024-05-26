@@ -22,6 +22,7 @@ services:
       - DB_PASS=dbpass
       - SECRET_KEY=090980809089089x9f0dsaf9
       - ALLOWED_HOSTS=localhost,127.0.0.1
+      - SERVICE_NAME=socmedapi
     depends_on:
       - db
       - redis
@@ -37,6 +38,7 @@ services:
     environment:
       - SECRET_KEY=090980809089089x9f0dsaf9
       - ALLOWED_HOSTS=localhost,127.0.0.1
+      - SERVICE_NAME=celery
     depends_on:
       - db
       - redis
