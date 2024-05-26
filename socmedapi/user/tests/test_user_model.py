@@ -4,13 +4,13 @@ Tests for the custom User model
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
-from django.db import models
 
 def create_user():
     """Create a new user."""
     email = "user@example.com"
     password = "password123"
     return get_user_model().objects.create_user(email, password)
+
 
 class UserModelTests(TestCase):
 
@@ -36,12 +36,13 @@ class UserModelTests(TestCase):
         ]
 
         for email, expected in sample_emails:
-            user = get_user_model().objects.create_user(email=email, password="password123")
+            user = get_user_model().objects.create_user(email=email,
+                                                        password="password123")
 
             self.assertEqual(user.email, expected)
 
     def test_existing_user_email_normalized(self):
-        """Test email is normalized for existing users updating their instances."""
+        """Test email is normalized for existing user updating the instance."""
         sample_emails = [
             ['test1@EXAMPLE.com', 'test1@example.com'],
             ['Test2@Example.com', 'Test2@example.com'],
@@ -54,7 +55,7 @@ class UserModelTests(TestCase):
             user.save()
             user.refresh_from_db()
 
-            self.assertEqual(user.email,expected)
+            self.assertEqual(user.email, expected)
 
     def test_creating_user_without_email_raises_error(self):
         """Test raised ValueError when creating a user without email."""
