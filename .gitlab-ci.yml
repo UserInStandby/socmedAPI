@@ -27,6 +27,11 @@ build:
 
 test:
   stage: test
+  image: python:3.12-alpine3.18
+  services:
+    - name: postgres:15-alpine3.18
+      alias: db
+    - redis:7.0.15-alpine
   script:
     - docker-compose up -d
     - docker-compose run --rm socmedapi sh -c "/scripts/wait-for-it.sh db:5432 -- python manage.py test"
