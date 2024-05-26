@@ -29,6 +29,7 @@ test:
   stage: test
   script:
     - docker-compose up -d
+    - sleep 10
     - docker-compose run --rm socmedapi sh -c "python manage.py test"
 
 lint:
