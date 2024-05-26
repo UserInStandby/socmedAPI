@@ -24,7 +24,8 @@ services:
       - ALLOWED_HOSTS=localhost,127.0.0.1
       - SERVICE_NAME=socmedapi
     depends_on:
-      - db
+      - db:
+          condition: service_healthy
       - redis
 
   celery:
@@ -40,7 +41,8 @@ services:
       - ALLOWED_HOSTS=localhost,127.0.0.1
       - SERVICE_NAME=celery
     depends_on:
-      - db
+      - db:
+          condition: service_healthy
       - redis
 
   db:
