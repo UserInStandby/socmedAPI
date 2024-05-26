@@ -7,7 +7,8 @@ from .models import CustomUser
 class CustomUserAdmin(admin.ModelAdmin):
     """Configuring admin panel for the User model."""
 
-    list_display = ["email", "created_at", "is_active", "is_staff", "is_superuser"]
+    list_display = ["email", "is_active", "is_staff", "is_superuser"]
+    readonly_fields = ["created_at"]
     fieldsets = [
         (
             "Data",
