@@ -26,6 +26,7 @@ services:
     depends_on:
       - db
       - redis
+    network_mode: host
 
   celery:
     container_name: celery
@@ -52,20 +53,10 @@ services:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
       - POSTGRES_PASSWORD=dbpass
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   redis:
     container_name: redis
     image: redis:7.0.15-alpine
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-      interval: 10s
-      timeout: 5s
-      retries: 3
 
 volumes:
   socmed-postgres-data:
