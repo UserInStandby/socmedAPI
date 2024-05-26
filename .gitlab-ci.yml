@@ -36,9 +36,9 @@ test:
       command: [ "postgres" ]
       entrypoint: [ "/docker-entrypoint.sh" ]
       environment:
-        - POSTGRES_DB=devdb
-        - POSTGRES_USER=devuser
-        - POSTGRES_PASSWORD=dbpass
+        POSTGRES_DB=devdb
+        POSTGRES_USER=devuser
+        POSTGRES_PASSWORD=dbpass
     - redis:7.0.15-alpine
 
   script:
