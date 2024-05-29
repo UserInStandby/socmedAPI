@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+
 class UserManager(BaseUserManager):
     """Manager for the User model."""
 
@@ -27,6 +28,7 @@ class UserManager(BaseUserManager):
         user.save(using=self.db)
 
         return user
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """User model."""

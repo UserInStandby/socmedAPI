@@ -4,6 +4,7 @@ from .models import CustomUser
 
 # Register your models here.
 
+
 class CustomUserAdmin(admin.ModelAdmin):
     """Configuring admin panel for the User model."""
 
@@ -24,5 +25,6 @@ class CustomUserAdmin(admin.ModelAdmin):
             },
         ),
     ]
+
 
 admin.site.register(CustomUser, CustomUserAdmin)

@@ -15,7 +15,7 @@ def create_user():
 class UserModelTests(TestCase):
 
     def test_successful_creating_user(self):
-        """Check successful user creation with right email and password(hashed)."""
+        """Check successful user creation(right email and hashed password)."""
         email = "user@example.com"
         password = "password123"
         user = get_user_model().objects.create_user(

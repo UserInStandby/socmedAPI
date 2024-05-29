@@ -9,6 +9,7 @@ from django.contrib.auth import (
 
 from rest_framework import serializers
 
+
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for the User model. (Registering, logging in, etc)."""
 
